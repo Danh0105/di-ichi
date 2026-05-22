@@ -1,0 +1,300 @@
+// src/app/page.tsx
+
+import Image from "next/image";
+import Link from "next/link";
+import { baloo } from "./lib/fonts";
+
+const courses = [
+  {
+    title: "STEM Mầm Non",
+    image:
+      "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop",
+  },
+
+  {
+    title: "Kỹ Năng Sống",
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop",
+  },
+
+  {
+    title: "Kỹ Năng Công Dân Số",
+    image:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
+  },
+
+  {
+    title: "STEM Tiểu Học",
+    image:
+      "https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1200&auto=format&fit=crop",
+  },
+];
+
+const activities = [
+  "https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1200&auto=format&fit=crop",
+
+  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop",
+
+  "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200&auto=format&fit=crop",
+];
+
+const news = [
+  {
+    title: "Tư duy sáng tạo cho trẻ",
+    image:
+      "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1200&auto=format&fit=crop",
+  },
+
+  {
+    title: "Kỹ năng học tập hiện đại",
+    image:
+      "https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop",
+  },
+
+  {
+    title: "Giáo dục STEM tương lai",
+    image:
+      "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop",
+  },
+];
+
+export default function HomePage() {
+  return (
+    <div className="bg-white text-slate-900">
+      {/* HERO */}
+      <section className="relative overflow-hidden">
+        <div className="relative h-[720px]">
+          <Image
+            src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1600&auto=format&fit=crop"
+            alt="Hero Banner"
+            fill
+            priority
+            className="object-cover"
+          />
+
+          {/* overlay đậm hơn */}
+          <div className="absolute inset-0 bg-black/60" />
+
+          {/* blur overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
+
+          <div className="relative z-10 max-w-7xl mx-auto h-full px-6 flex items-center">
+            <div className="max-w-2xl">
+              <p className="inline-flex items-center bg-yellow-400 text-black px-5 py-2 rounded-full font-bold text-sm shadow-lg">
+                GIÁO DỤC STEM & KỸ NĂNG
+              </p>
+
+              <h1
+                className={`${baloo.className}
+                mt-6
+                text-5xl
+                md:text-7xl
+                lg:text-8xl
+                text-white
+                font-extrabold
+                leading-[1.05]`}
+              >
+                PHÁT TRIỂN
+                <span className="block text-yellow-400">TƯƠNG LAI TRẺ EM</span>
+              </h1>
+
+              <p className="mt-8 text-lg md:text-xl text-white/80 leading-9 max-w-xl">
+                Môi trường học tập hiện đại giúp trẻ phát triển tư duy logic,
+                sáng tạo và kỹ năng công nghệ.
+              </p>
+
+              <div className="mt-10 flex flex-wrap gap-4">
+                <button className="bg-yellow-400 hover:bg-yellow-300 text-black transition px-8 py-4 rounded-2xl font-bold shadow-xl">
+                  Đăng ký ngay
+                </button>
+
+                <button className="border border-white/40 backdrop-blur-md bg-white/10 text-white hover:bg-white hover:text-black transition px-8 py-4 rounded-2xl font-bold">
+                  Xem khóa học
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section className="py-28 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+          <div>
+            <p className="text-yellow-500 font-black uppercase tracking-[4px]">
+              Giới thiệu
+            </p>
+
+            <h2 className="text-4xl lg:text-6xl font-black mt-5 leading-tight text-slate-900">
+              Trung tâm giáo dục kỹ năng &
+              <span className="block text-yellow-500">STEM cho trẻ em</span>
+            </h2>
+
+            <p className="mt-8 text-slate-600 leading-9 text-lg">
+              DI-ICHI mang đến môi trường học tập hiện đại, sáng tạo giúp trẻ
+              phát triển toàn diện về tư duy, kỹ năng mềm và công nghệ.
+            </p>
+
+            <div className="grid grid-cols-2 gap-6 mt-12">
+              <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm">
+                <h3 className="text-5xl font-black text-yellow-500">10+</h3>
+
+                <p className="mt-3 text-slate-600 font-medium">
+                  Năm kinh nghiệm
+                </p>
+              </div>
+
+              <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm">
+                <h3 className="text-5xl font-black text-blue-500">5000+</h3>
+
+                <p className="mt-3 text-slate-600 font-medium">Học viên</p>
+              </div>
+            </div>
+
+            <button className="mt-10 bg-slate-900 hover:bg-black text-white transition px-8 py-4 rounded-2xl font-bold shadow-lg">
+              Xem thêm
+            </button>
+          </div>
+
+          <div className="relative">
+            <Image
+              src="https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=1200&auto=format&fit=crop"
+              alt="Students"
+              width={700}
+              height={500}
+              className="rounded-[40px] shadow-2xl object-cover"
+            />
+
+            <div className="absolute -bottom-8 -left-8 bg-yellow-400 rounded-3xl p-6 shadow-2xl">
+              <p className="text-4xl font-black text-black">100%</p>
+
+              <p className="font-semibold text-black">Giáo trình hiện đại</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* COURSES */}
+      <section className="py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center">
+            <p className="text-yellow-500 font-black uppercase tracking-[4px]">
+              Chương trình đào tạo
+            </p>
+
+            <h2 className="text-4xl lg:text-6xl font-black mt-5 text-slate-900">
+              Các khóa học nổi bật
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
+            {courses.map((course, index) => (
+              <div
+                key={index}
+                className="group bg-white rounded-[32px] overflow-hidden border border-slate-100 hover:shadow-2xl transition duration-300"
+              >
+                <div className="relative overflow-hidden">
+                  <Image
+                    src={course.image}
+                    alt={course.title}
+                    width={500}
+                    height={350}
+                    className="w-full h-72 object-cover group-hover:scale-105 transition duration-500"
+                  />
+                </div>
+
+                <div className="p-8">
+                  <h3 className="text-2xl font-black text-slate-900">
+                    {course.title}
+                  </h3>
+
+                  <p className="mt-4 text-slate-600 leading-8">
+                    Chương trình giáo dục hiện đại dành cho trẻ em phát triển
+                    toàn diện.
+                  </p>
+
+                  <button className="mt-6 text-yellow-500 font-bold hover:translate-x-1 transition">
+                    Xem chi tiết →
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY */}
+      <section className="py-28 bg-slate-900">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center">
+            <p className="text-yellow-400 font-black uppercase tracking-[4px]">
+              Lý do lựa chọn
+            </p>
+
+            <h2 className="text-4xl lg:text-6xl font-black mt-5 text-white">
+              Vì sao chọn DI-ICHI
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
+            {[
+              "Đội ngũ giáo viên chất lượng",
+              "Môi trường học tập hiện đại",
+              "Giáo trình STEM thực tiễn",
+              "Hoạt động ngoại khóa đa dạng",
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-[30px] p-8 shadow-2xl"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-yellow-100 flex items-center justify-center text-3xl">
+                  ⭐
+                </div>
+
+                <h3 className="mt-6 text-2xl font-black leading-tight text-slate-900">
+                  {item}
+                </h3>
+
+                <p className="mt-4 text-slate-600 leading-8">
+                  Giúp trẻ phát triển kỹ năng và tư duy thực tế.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ACTIVITIES */}
+      <section className="py-28 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center">
+            <p className="text-yellow-500 font-black uppercase tracking-[4px]">
+              Hoạt động
+            </p>
+
+            <h2 className="text-4xl lg:text-6xl font-black mt-5">
+              Hoạt động khóa học
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mt-20">
+            {activities.map((image, index) => (
+              <div
+                key={index}
+                className="overflow-hidden rounded-[35px] shadow-xl"
+              >
+                <Image
+                  src={image}
+                  alt="Activity"
+                  width={500}
+                  height={450}
+                  className="w-full h-[420px] object-cover hover:scale-105 transition duration-500"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
