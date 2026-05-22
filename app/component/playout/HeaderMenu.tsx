@@ -30,7 +30,7 @@ const menus = [
   },
   {
     name: "Công khai",
-    href: "/page/contact",
+    href: "/page/public",
   },
 ];
 
