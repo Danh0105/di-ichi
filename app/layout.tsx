@@ -6,8 +6,14 @@ import Header from "./component/playout/Header";
 import Footer from "./component/playout/Footer";
 
 export const metadata: Metadata = {
-  title: "DI-ICHI",
+  title: "Chuyển đổi số DI-ICHI | Đào tạo và tư vấn chuyển đổi số ",
   description: "DI-ICHI Education",
+
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({

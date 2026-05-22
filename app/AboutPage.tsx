@@ -42,9 +42,7 @@ export default function AboutPage() {
             />
 
             <div>
-              <h1 className="text-3xl font-black text-yellow-500">
-                DI-ICHI
-              </h1>
+              <h1 className="text-3xl font-black text-yellow-500">DI-ICHI</h1>
 
               <p className="text-sm text-gray-500">
                 Kỹ năng sống & STEM Education
@@ -134,9 +132,7 @@ export default function AboutPage() {
               <div className="bg-white shadow-lg rounded-3xl p-8">
                 <h4 className="text-4xl font-black text-blue-500">5000+</h4>
 
-                <p className="mt-3 text-gray-600 font-semibold">
-                  Học viên
-                </p>
+                <p className="mt-3 text-gray-600 font-semibold">Học viên</p>
               </div>
             </div>
           </div>
@@ -153,9 +149,7 @@ export default function AboutPage() {
             <div className="absolute -bottom-10 -left-10 bg-yellow-400 text-white rounded-3xl p-8 shadow-2xl">
               <h4 className="text-4xl font-black">100%</h4>
 
-              <p className="mt-2 font-semibold">
-                Giáo trình thực hành thực tế
-              </p>
+              <p className="mt-2 font-semibold">Giáo trình thực hành thực tế</p>
             </div>
           </div>
         </div>
