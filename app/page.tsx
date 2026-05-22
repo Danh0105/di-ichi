@@ -1,7 +1,9 @@
 // src/app/page.tsx
 
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
+import { motion } from "framer-motion";
 import { baloo } from "./lib/fonts";
 
 const courses = [
@@ -38,48 +40,53 @@ const activities = [
   "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200&auto=format&fit=crop",
 ];
 
-const news = [
-  {
-    title: "Tư duy sáng tạo cho trẻ",
-    image:
-      "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1200&auto=format&fit=crop",
+const fadeUp = {
+  hidden: {
+    opacity: 0,
+    y: 60,
   },
 
-  {
-    title: "Kỹ năng học tập hiện đại",
-    image:
-      "https://images.unsplash.com/photo-1513258496099-48168024aec0?q=80&w=1200&auto=format&fit=crop",
-  },
+  visible: {
+    opacity: 1,
+    y: 0,
 
-  {
-    title: "Giáo dục STEM tương lai",
-    image:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop",
+    transition: {
+      duration: 0.7,
+    },
   },
-];
+};
 
 export default function HomePage() {
   return (
-    <div className="bg-white text-slate-900">
+    <div className="bg-white text-slate-900 overflow-hidden">
       {/* HERO */}
-      <section className="relative overflow-hidden">
+      <motion.section
+        className="relative overflow-hidden"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
         <div className="relative h-[720px]">
           <Image
             src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1600&auto=format&fit=crop"
             alt="Hero Banner"
             fill
             priority
-            className="object-cover"
+            className="object-cover scale-105"
           />
 
-          {/* overlay đậm hơn */}
           <div className="absolute inset-0 bg-black/60" />
 
-          {/* blur overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
 
           <div className="relative z-10 max-w-7xl mx-auto h-full px-6 flex items-center">
-            <div className="max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, y: 80 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="max-w-2xl"
+            >
               <p className="inline-flex items-center bg-yellow-400 text-black px-5 py-2 rounded-full font-bold text-sm shadow-lg">
                 GIÁO DỤC STEM & KỸ NĂNG
               </p>
@@ -104,23 +111,34 @@ export default function HomePage() {
               </p>
 
               <div className="mt-10 flex flex-wrap gap-4">
-                <button className="bg-yellow-400 hover:bg-yellow-300 text-black transition px-8 py-4 rounded-2xl font-bold shadow-xl">
+                <button className="bg-yellow-400 hover:bg-yellow-300 text-black transition px-8 py-4 rounded-2xl font-bold shadow-xl hover:scale-105">
                   Đăng ký ngay
                 </button>
 
-                <button className="border border-white/40 backdrop-blur-md bg-white/10 text-white hover:bg-white hover:text-black transition px-8 py-4 rounded-2xl font-bold">
+                <button className="border border-white/40 backdrop-blur-md bg-white/10 text-white hover:bg-white hover:text-black transition px-8 py-4 rounded-2xl font-bold hover:scale-105">
                   Xem khóa học
                 </button>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ABOUT */}
-      <section className="py-28 bg-slate-50">
+      <motion.section
+        className="py-28 bg-slate-50"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <p className="text-yellow-500 font-black uppercase tracking-[4px]">
               Giới thiệu
             </p>
@@ -136,27 +154,39 @@ export default function HomePage() {
             </p>
 
             <div className="grid grid-cols-2 gap-6 mt-12">
-              <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm">
+              <motion.div
+                whileHover={{ y: -5 }}
+                className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm"
+              >
                 <h3 className="text-5xl font-black text-yellow-500">10+</h3>
 
                 <p className="mt-3 text-slate-600 font-medium">
                   Năm kinh nghiệm
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm">
+              <motion.div
+                whileHover={{ y: -5 }}
+                className="bg-white border border-slate-100 rounded-3xl p-8 shadow-sm"
+              >
                 <h3 className="text-5xl font-black text-blue-500">5000+</h3>
 
                 <p className="mt-3 text-slate-600 font-medium">Học viên</p>
-              </div>
+              </motion.div>
             </div>
 
-            <button className="mt-10 bg-slate-900 hover:bg-black text-white transition px-8 py-4 rounded-2xl font-bold shadow-lg">
+            <button className="mt-10 bg-slate-900 hover:bg-black text-white transition px-8 py-4 rounded-2xl font-bold shadow-lg hover:scale-105">
               Xem thêm
             </button>
-          </div>
+          </motion.div>
 
-          <div className="relative">
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: 80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <Image
               src="https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=1200&auto=format&fit=crop"
               alt="Students"
@@ -165,17 +195,32 @@ export default function HomePage() {
               className="rounded-[40px] shadow-2xl object-cover"
             />
 
-            <div className="absolute -bottom-8 -left-8 bg-yellow-400 rounded-3xl p-6 shadow-2xl">
+            <motion.div
+              animate={{
+                y: [0, -10, 0],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+              }}
+              className="absolute -bottom-8 -left-8 bg-yellow-400 rounded-3xl p-6 shadow-2xl"
+            >
               <p className="text-4xl font-black text-black">100%</p>
 
               <p className="font-semibold text-black">Giáo trình hiện đại</p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* COURSES */}
-      <section className="py-28 bg-white">
+      <motion.section
+        className="py-28 bg-white"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
             <p className="text-yellow-500 font-black uppercase tracking-[4px]">
@@ -189,8 +234,18 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
             {courses.map((course, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.15,
+                }}
+                whileHover={{
+                  y: -10,
+                }}
                 className="group bg-white rounded-[32px] overflow-hidden border border-slate-100 hover:shadow-2xl transition duration-300"
               >
                 <div className="relative overflow-hidden">
@@ -199,7 +254,7 @@ export default function HomePage() {
                     alt={course.title}
                     width={500}
                     height={350}
-                    className="w-full h-72 object-cover group-hover:scale-105 transition duration-500"
+                    className="w-full h-72 object-cover group-hover:scale-110 transition duration-700"
                   />
                 </div>
 
@@ -217,14 +272,20 @@ export default function HomePage() {
                     Xem chi tiết →
                   </button>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* WHY */}
-      <section className="py-28 bg-slate-900">
+      <motion.section
+        className="py-28 bg-slate-900"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
             <p className="text-yellow-400 font-black uppercase tracking-[4px]">
@@ -243,8 +304,18 @@ export default function HomePage() {
               "Giáo trình STEM thực tiễn",
               "Hoạt động ngoại khóa đa dạng",
             ].map((item, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.1,
+                }}
+                whileHover={{
+                  y: -8,
+                }}
                 className="bg-white rounded-[30px] p-8 shadow-2xl"
               >
                 <div className="w-16 h-16 rounded-2xl bg-yellow-100 flex items-center justify-center text-3xl">
@@ -258,14 +329,20 @@ export default function HomePage() {
                 <p className="mt-4 text-slate-600 leading-8">
                   Giúp trẻ phát triển kỹ năng và tư duy thực tế.
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ACTIVITIES */}
-      <section className="py-28 bg-slate-50">
+      <motion.section
+        className="py-28 bg-slate-50"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+      >
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
             <p className="text-yellow-500 font-black uppercase tracking-[4px]">
@@ -279,8 +356,18 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-8 mt-20">
             {activities.map((image, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 80 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.7,
+                  delay: index * 0.15,
+                }}
+                whileHover={{
+                  y: -10,
+                }}
                 className="overflow-hidden rounded-[35px] shadow-xl"
               >
                 <Image
@@ -288,13 +375,13 @@ export default function HomePage() {
                   alt="Activity"
                   width={500}
                   height={450}
-                  className="w-full h-[420px] object-cover hover:scale-105 transition duration-500"
+                  className="w-full h-[420px] object-cover hover:scale-110 transition duration-700"
                 />
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

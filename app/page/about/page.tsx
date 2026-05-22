@@ -55,22 +55,29 @@ export default function AboutPage() {
   return (
     <div className="bg-[#f8fafc] overflow-hidden">
       {/* HERO */}
-      <section className="relative">
+      <section className="relative overflow-hidden">
+        {/* FLOATING BLOBS */}
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-yellow-400/20 rounded-full blur-3xl animate-floating" />
+
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-orange-500/20 rounded-full blur-3xl animate-floating" />
+
+        {/* BG */}
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1800&auto=format&fit=crop"
             alt="Hero"
             fill
             priority
-            className="object-cover"
+            className="object-cover scale-105"
           />
 
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/70 to-black/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/80 to-black/40" />
         </div>
 
+        {/* CONTENT */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 lg:py-44">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-400/10 border border-yellow-400/20 backdrop-blur">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-yellow-400/10 border border-yellow-400/20 backdrop-blur animate-fly-up">
               <Sparkles className="text-yellow-400" size={18} />
 
               <span className="text-yellow-300 text-sm font-semibold tracking-wide">
@@ -78,23 +85,26 @@ export default function AboutPage() {
               </span>
             </div>
 
-            <h1 className="mt-8 text-5xl md:text-7xl font-black text-white leading-[1.1]">
+            <h1 className="mt-8 text-5xl md:text-7xl font-black text-white leading-[1.1] animate-fly-left">
               Kiến tạo
               <span className="block text-yellow-400">tương lai trẻ em</span>
             </h1>
 
-            <p className="mt-8 text-lg md:text-xl text-white/75 leading-9 max-w-2xl">
+            <p className="mt-8 text-lg md:text-xl text-white/75 leading-9 max-w-2xl animate-fly-right">
               DI-ICHI là trung tâm giáo dục kỹ năng sống, STEM và Robotics giúp
               trẻ phát triển tư duy, sáng tạo và bản lĩnh trong thời đại số.
             </p>
 
-            <div className="flex flex-wrap gap-4 mt-10">
-              <button className="h-14 px-8 rounded-2xl bg-yellow-400 hover:bg-yellow-300 text-black font-bold transition flex items-center gap-2">
+            <div className="flex flex-wrap gap-4 mt-10 animate-fly-up delay-400">
+              <button className="group h-14 px-8 rounded-2xl bg-yellow-400 hover:bg-yellow-300 text-black font-bold transition-all duration-300 flex items-center gap-2 hover:scale-105">
                 Khám phá khóa học
-                <ArrowRight size={18} />
+                <ArrowRight
+                  size={18}
+                  className="group-hover:translate-x-1 transition"
+                />
               </button>
 
-              <button className="h-14 px-8 rounded-2xl border border-white/20 text-white hover:bg-white/10 transition font-semibold">
+              <button className="h-14 px-8 rounded-2xl border border-white/20 text-white hover:bg-white/10 hover:scale-105 transition-all duration-300 font-semibold">
                 Liên hệ tư vấn
               </button>
             </div>
@@ -109,7 +119,7 @@ export default function AboutPage() {
             {stats.map((item, index) => (
               <div
                 key={index}
-                className="bg-white rounded-[30px] p-8 shadow-2xl border border-slate-100"
+                className="bg-white rounded-[30px] p-8 shadow-2xl border border-slate-100 hover:-translate-y-4 hover:shadow-yellow-200/50 transition-all duration-500 animate-fly-up"
               >
                 <h3 className="text-4xl font-black text-yellow-500">
                   {item.number}
@@ -126,18 +136,21 @@ export default function AboutPage() {
       <section className="py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <div className="relative">
-              <div className="absolute -top-8 -left-8 w-40 h-40 bg-yellow-300 rounded-full blur-3xl opacity-30" />
+            {/* IMAGE */}
+            <div className="relative animate-fly-left">
+              <div className="absolute -top-8 -left-8 w-40 h-40 bg-yellow-300 rounded-full blur-3xl opacity-30 animate-floating" />
 
-              <Image
-                src="https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=1400&auto=format&fit=crop"
-                alt="Students"
-                width={700}
-                height={700}
-                className="relative rounded-[40px] shadow-2xl object-cover"
-              />
+              <div className="overflow-hidden rounded-[40px]">
+                <Image
+                  src="https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=1400&auto=format&fit=crop"
+                  alt="Students"
+                  width={700}
+                  height={700}
+                  className="relative rounded-[40px] shadow-2xl object-cover hover:scale-105 transition duration-700"
+                />
+              </div>
 
-              <div className="absolute bottom-8 left-8 bg-white rounded-3xl p-6 shadow-xl border border-slate-100">
+              <div className="absolute bottom-8 left-8 bg-white rounded-3xl p-6 shadow-xl border border-slate-100 hover:-translate-y-2 transition-all duration-300">
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 rounded-2xl bg-yellow-100 flex items-center justify-center">
                     <Award className="text-yellow-500" size={30} />
@@ -154,7 +167,8 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div>
+            {/* CONTENT */}
+            <div className="animate-fly-right">
               <p className="text-yellow-500 font-black tracking-[4px] uppercase">
                 VỀ CHÚNG TÔI
               </p>
@@ -176,7 +190,10 @@ export default function AboutPage() {
                   "Không gian học tập hiện đại",
                   "Hoạt động ngoại khóa sáng tạo",
                 ].map((item, index) => (
-                  <div key={index} className="flex items-center gap-4">
+                  <div
+                    key={index}
+                    className="flex items-center gap-4 hover:translate-x-2 transition-all duration-300"
+                  >
                     <div className="w-12 h-12 rounded-2xl bg-yellow-100 flex items-center justify-center">
                       <Sparkles className="text-yellow-500" size={20} />
                     </div>
@@ -195,7 +212,7 @@ export default function AboutPage() {
       {/* VALUES */}
       <section className="py-28 bg-white">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto animate-fly-up">
             <p className="text-yellow-500 font-black tracking-[4px] uppercase">
               GIÁ TRỊ CỐT LÕI
             </p>
@@ -212,9 +229,9 @@ export default function AboutPage() {
               return (
                 <div
                   key={index}
-                  className="group bg-[#f8fafc] hover:bg-yellow-400 transition-all duration-300 rounded-[32px] p-10"
+                  className="group bg-[#f8fafc] hover:bg-yellow-400 hover:-translate-y-4 hover:shadow-2xl transition-all duration-500 rounded-[32px] p-10 animate-fly-up"
                 >
-                  <div className="w-20 h-20 rounded-3xl bg-white shadow-lg flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-3xl bg-white shadow-lg flex items-center justify-center group-hover:scale-110 transition">
                     <Icon className="text-yellow-500" size={38} />
                   </div>
 
@@ -235,7 +252,7 @@ export default function AboutPage() {
       {/* TEACHERS */}
       <section className="py-28 bg-slate-950">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center">
+          <div className="text-center animate-fly-up">
             <p className="text-yellow-400 font-black tracking-[4px] uppercase">
               ĐỘI NGŨ
             </p>
@@ -249,7 +266,7 @@ export default function AboutPage() {
             {teachers.map((item) => (
               <div
                 key={item}
-                className="group bg-white rounded-[32px] overflow-hidden"
+                className="group bg-white rounded-[32px] overflow-hidden hover:-translate-y-4 transition-all duration-500 animate-fly-up"
               >
                 <div className="overflow-hidden">
                   <Image
@@ -257,7 +274,7 @@ export default function AboutPage() {
                     alt="Teacher"
                     width={500}
                     height={500}
-                    className="w-full h-[360px] object-cover group-hover:scale-105 transition duration-700"
+                    className="w-full h-[360px] object-cover group-hover:scale-110 transition duration-700"
                   />
                 </div>
 
@@ -275,7 +292,7 @@ export default function AboutPage() {
                     pháp giảng dạy.
                   </p>
 
-                  <button className="mt-8 h-12 px-6 rounded-xl bg-slate-900 text-white hover:bg-yellow-400 hover:text-black transition font-semibold">
+                  <button className="mt-8 h-12 px-6 rounded-xl bg-slate-900 text-white hover:bg-yellow-400 hover:text-black hover:scale-105 transition-all duration-300 font-semibold">
                     Xem thêm
                   </button>
                 </div>
@@ -286,9 +303,13 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-28 bg-yellow-400">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <div className="w-24 h-24 mx-auto rounded-[30px] bg-white flex items-center justify-center shadow-xl">
+      <section className="py-28 bg-yellow-400 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-white/20 rounded-full blur-3xl animate-floating" />
+
+        <div className="absolute bottom-0 right-0 w-[250px] h-[250px] bg-orange-500/20 rounded-full blur-3xl animate-floating" />
+
+        <div className="relative max-w-5xl mx-auto px-6 text-center animate-fly-up">
+          <div className="w-24 h-24 mx-auto rounded-[30px] bg-white flex items-center justify-center shadow-xl hover:scale-110 transition-all duration-300">
             <Users2 className="text-yellow-500" size={44} />
           </div>
 
@@ -301,7 +322,7 @@ export default function AboutPage() {
             trong tương lai.
           </p>
 
-          <button className="mt-10 h-14 px-10 rounded-2xl bg-slate-900 text-white hover:bg-black transition font-bold">
+          <button className="mt-10 h-14 px-10 rounded-2xl bg-slate-900 text-white hover:bg-black hover:scale-105 transition-all duration-300 font-bold">
             Đăng ký tư vấn
           </button>
         </div>
