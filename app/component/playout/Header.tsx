@@ -38,35 +38,43 @@ export default function Header() {
             <div className="relative">
               <div className="absolute inset-0 bg-orange-400/20 blur-2xl rounded-full" />
 
-              <div className="relative group">
-                {/* Glow background */}
-                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-br from-orange-400 via-amber-300 to-orange-500 blur-md opacity-70 group-hover:opacity-100 transition duration-300" />
+              <div className="relative flex items-center gap-4 group">
+                {/* LOGO */}
+                <Link href="/" className="flex items-center shrink-0 group">
+                  <div className="flex items-center gap-3">
+                    {/* Logo */}
+                    <Image
+                      src={LOGO1}
+                      alt="DI-ICHI"
+                      width={120}
+                      height={56}
+                      priority
+                      className="object-contain"
+                    />
 
-                {/* Main logo container */}
-                <div className="relative w-[150px] h-[70px] rounded-3xl bg-white border border-orange-100 flex items-center justify-center shadow-[0_12px_35px_rgba(251,146,60,0.35)] backdrop-blur-xl overflow-hidden">
-                  {/* Decorative gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-amber-50" />
+                    {/* Text */}
+                    <div className="hidden xl:flex flex-col leading-tight">
+                      <p className="text-[10px] font-semibold tracking-[3px] uppercase text-slate-500">
+                        Chuyển đổi số
+                      </p>
 
-                  {/* Inner circle */}
-                  <div className="absolute w-[150px] h-[70px] rounded-2xl bg-gradient-to-br from-orange-500 to-amber-400 shadow-inner" />
+                      <span className="text-[10px] font-bold tracking-[2px] text-orange-500">
+                        DIGITAL TRANSFORMATION
+                      </span>
+                    </div>
+                  </div>
+                </Link>
 
-                  {/* Logo */}
-                  <Image
-                    src={LOGO1}
-                    alt="DI-ICHI"
-                    width={140}
-                    height={70}
-                    priority
-                    className="relative z-10 object-contain drop-shadow-[0_4px_10px_rgba(255,255,255,0.45)]"
-                  />
-                </div>
+                {/* Decorative blur */}
+                <div className="absolute -right-6 top-1/2 -translate-y-1/2 w-20 h-20 bg-orange-200/30 blur-3xl rounded-full opacity-70" />
               </div>
             </div>
           </Link>
 
           {/* DESKTOP MENU */}
-          <div className="hidden lg:flex items-center flex-1 justify-center">
-            <nav className="flex items-center gap-1 bg-slate-50 border border-slate-100 rounded-full px-3 py-2 shadow-sm">
+
+          <div className="hidden lg:flex items-center flex-1 justify-center min-w-0">
+            <nav className="flex items-center gap-1 bg-slate-50 border border-slate-100 rounded-full px-2 py-1.5 shadow-sm">
               <HeaderMenu mobile={false} />
             </nav>
           </div>
