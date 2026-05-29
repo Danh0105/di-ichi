@@ -55,7 +55,7 @@ export default function Header() {
                     {/* Text */}
                     <div className="hidden xl:flex flex-col leading-tight">
                       <p className="text-[10px] font-semibold tracking-[3px] uppercase text-slate-500">
-                        Chuyển đổi số
+                        Chuyển đổi số ICHI
                       </p>
 
                       <span className="text-[10px] font-bold tracking-[2px] text-orange-500">
