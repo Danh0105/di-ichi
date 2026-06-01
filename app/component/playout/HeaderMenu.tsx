@@ -3,36 +3,11 @@
 import Link from "next/link";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
+import { menus } from "./menu.config";
 type Props = {
   mobile?: boolean;
   onClickItem?: () => void;
 };
-const menus = [
-  {
-    name: "Trang chủ",
-    href: "/",
-  },
-  {
-    name: "Giới thiệu",
-    href: "/page/about",
-  },
-  {
-    name: "Khóa học",
-    href: "/page/courses",
-  },
-  {
-    name: "Hoạt động",
-    href: "/page/activities",
-  },
-  {
-    name: "Tin tức",
-    href: "/page/news",
-  },
-  {
-    name: "Công khai",
-    href: "/page/public",
-  },
-];
 
 export default function HeaderMenu({ mobile, onClickItem }: Props) {
   const pathname = usePathname();

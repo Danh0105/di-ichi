@@ -3,6 +3,25 @@ import { MapPin, Phone, Mail, Globe } from "lucide-react";
 import { FaFacebookF, FaYoutube, FaLinkedinIn } from "react-icons/fa";
 import LOGO1 from "@/app/static/LOGO1.png";
 import Image from "next/image";
+import { menus } from "./menu.config";
+const policies = [
+  {
+    label: "Chính sách thanh toán",
+    href: "/page/policy/payment",
+  },
+  {
+    label: "Chính sách bảo mật",
+    href: "/page/policy/privacy",
+  },
+  {
+    label: "Điều khoản sử dụng",
+    href: "/dieu-khoan-su-dung",
+  },
+  {
+    label: "Quyền lợi học sinh",
+    href: "/page/policy/student-benefits",
+  },
+];
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-slate-950 text-white">
@@ -89,8 +108,7 @@ export default function Footer() {
                 <MapPin size={20} className="text-yellow-400 shrink-0 mt-1" />
 
                 <p className="text-slate-300 leading-7">
-                  231/1 Nguyễn Phúc Chu, Phường 15, Quận Tân Bình, TP. Hồ Chí
-                  Minh
+                  233C Nguyễn Phúc Chu, Phường Tân Sơn, Thành phố Hồ Chí Minh.
                 </p>
               </div>
 
@@ -121,24 +139,17 @@ export default function Footer() {
             <div className="w-12 h-1 bg-yellow-400 rounded-full mt-3 mb-8" />
 
             <ul className="space-y-4">
-              {[
-                "Trang chủ",
-                "Giới thiệu",
-                "Khóa học",
-                "Hoạt động",
-                "Tin tức",
-                "Liên hệ",
-              ].map((item) => (
-                <li key={item}>
+              {menus.map((item) => (
+                <li key={item.href}>
                   <Link
-                    href="#"
+                    href={item.href}
                     className="
-                      text-slate-300
-                      hover:text-yellow-400
-                      transition
-                    "
+            text-slate-300
+            hover:text-yellow-400
+            transition
+          "
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}
@@ -152,22 +163,28 @@ export default function Footer() {
             <div className="w-12 h-1 bg-yellow-400 rounded-full mt-3 mb-8" />
 
             <ul className="space-y-4">
-              {[
-                "Chính sách thanh toán",
-                "Chính sách bảo mật",
-                "Điều khoản sử dụng",
-                "Quyền lợi học sinh",
-              ].map((item) => (
-                <li key={item}>
+              {policies.map((item) => (
+                <li key={item.href}>
                   <Link
-                    href="#"
+                    href={item.href}
                     className="
-                      text-slate-300
-                      hover:text-yellow-400
-                      transition
-                    "
+            group
+            flex items-center gap-2
+            text-slate-300
+            hover:text-yellow-400
+            transition-all duration-300
+          "
                   >
-                    {item}
+                    <span
+                      className="
+              w-0 h-[2px]
+              bg-yellow-400
+              group-hover:w-4
+              transition-all duration-300
+            "
+                    />
+
+                    {item.label}
                   </Link>
                 </li>
               ))}

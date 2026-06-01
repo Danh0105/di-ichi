@@ -5,7 +5,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 
 import LOGO1 from "@/app/static/LOGO1.png";
 import HeaderMenu from "./HeaderMenu";
@@ -24,14 +24,14 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-5 text-slate-500">
-            <span>Hotline: 0900 000 000</span>
+            <span>Hotline: 0707 868 000</span>
             <span>Email: support@di-ichi.vn</span>
           </div>
         </div>
       </div>
 
       {/* MAIN HEADER */}
-      <div className="max-w-7xl mx-auto px-4 lg:px-6">
+      <div className="max-w-[1400px] mx-auto px-2 lg:px-6">
         <div className="h-[82px] flex items-center justify-between gap-5">
           {/* LOGO */}
           <Link href="/" className="flex items-center gap-3 shrink-0 group">
@@ -81,13 +81,46 @@ export default function Header() {
 
           {/* RIGHT ACTION */}
           <div className="hidden lg:flex items-center gap-3">
-            <button className="h-11 px-5 rounded-full border border-orange-200 text-orange-600 font-semibold hover:bg-orange-50 transition">
+            <Link
+              href="/page/faq"
+              className="
+              flex items-center gap-1
+    h-11 px-5
+    rounded-full
+    border border-orange-200
+    text-orange-600
+    font-semibold
+    hover:bg-orange-50
+    transition
+  "
+            >
               Tư vấn
-            </button>
-
-            <button className="h-11 px-6 rounded-full bg-orange-500 hover:bg-orange-600 text-white font-semibold shadow-lg shadow-orange-200 transition">
+            </Link>
+            <Link
+              href="/page/registration"
+              className="
+    group
+    h-12 px-7
+    inline-flex items-center gap-2
+    rounded-full
+    bg-gradient-to-r from-orange-500 to-orange-600
+    hover:from-orange-600 hover:to-orange-700
+    text-white font-bold
+    shadow-xl shadow-orange-300/40
+    transition-all duration-300
+    hover:-translate-y-1
+    hover:shadow-2xl hover:shadow-orange-400/50
+  "
+            >
               Đăng ký học
-            </button>
+              <ArrowRight
+                size={18}
+                className="
+      transition-transform duration-300
+      group-hover:translate-x-1
+    "
+              />
+            </Link>
           </div>
 
           {/* MOBILE BUTTON */}

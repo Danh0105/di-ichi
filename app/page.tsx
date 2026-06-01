@@ -3,7 +3,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { baloo } from "./lib/fonts";
 import { useEffect, useState } from "react";
 import slide1 from "./static/slide1.png";
@@ -12,34 +12,47 @@ import slide3 from "./static/slide3.png";
 import slide4 from "./static/slide4.png";
 import slide5 from "./static/slide5.png";
 import about from "./static/about.png";
-
+import { X } from "lucide-react";
 const heroImages = [slide1, slide2, slide3, slide4, slide5];
 const courses = [
   {
-    title: "STEM Mầm Non",
-    image:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop",
+    title: "Kỹ năng sống",
+    short:
+      "Giúp trẻ phát triển toàn diện về tư duy, cảm xúc và kỹ năng xã hội.",
+    desc: "Chương trình Kỹ năng sống giúp học sinh hình thành sự tự tin, khả năng giao tiếp, làm việc nhóm, xử lý tình huống và phát triển nhân cách tích cực trong học tập cũng như cuộc sống.",
+    image: "/images/ky-nang-song.jpg",
   },
-
   {
-    title: "Kỹ Năng Sống",
-    image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop",
+    title: "STEM",
+    short: "Khơi dậy đam mê khoa học, công nghệ và sáng tạo.",
+    desc: "Chương trình STEM giúp học sinh tiếp cận khoa học, công nghệ, kỹ thuật và toán học thông qua các hoạt động thực hành, dự án sáng tạo và giải quyết vấn đề thực tế.",
+    image: "/images/stem.jpg",
   },
-
   {
-    title: "Kỹ Năng Công Dân Số",
-    image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
+    title: "Công dân số",
+    short: "Sử dụng công nghệ an toàn, hiệu quả và có trách nhiệm.",
+    desc: "Chương trình Công dân số trang bị cho học sinh kỹ năng sử dụng thiết bị công nghệ, bảo vệ bản thân trên môi trường mạng, nhận diện rủi ro số và ứng xử văn minh trên internet.",
+    image: "/images/cong-dan-so.jpg",
   },
-
   {
-    title: "STEM Tiểu Học",
-    image:
-      "https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1200&auto=format&fit=crop",
+    title: "AI",
+    short: "Tiếp cận công nghệ trí tuệ nhân tạo hiện đại.",
+    desc: "Chương trình AI giúp học sinh làm quen với trí tuệ nhân tạo, tư duy công nghệ, ứng dụng chuyển đổi số và phát triển khả năng sáng tạo trong kỷ nguyên số.",
+    image: "/images/ai.jpg",
+  },
+  {
+    title: "Tiếng Anh",
+    short: "Phát triển ngôn ngữ và hội nhập quốc tế.",
+    desc: "Chương trình Tiếng Anh giúp học sinh phát triển kỹ năng nghe, nói, đọc, viết thông qua phương pháp học sinh động, thực tiễn và phù hợp với lứa tuổi.",
+    image: "/images/tieng-anh.jpg",
+  },
+  {
+    title: "Tin học ICDL",
+    short: "Chuẩn tin học quốc tế, giá trị toàn cầu.",
+    desc: "Chương trình Tin học ICDL trang bị kiến thức và kỹ năng tin học chuẩn quốc tế, giúp học sinh sử dụng máy tính, phần mềm văn phòng và công nghệ số một cách chuyên nghiệp.",
+    image: "/images/icdl.jpg",
   },
 ];
-
 const activities = [
   "https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1200&auto=format&fit=crop",
 
@@ -63,7 +76,28 @@ const fadeUp = {
     },
   },
 };
-
+const reasons = [
+  {
+    title: "Đội ngũ giáo viên chất lượng",
+    desc: "Đội ngũ giáo viên giàu kinh nghiệm và tâm huyết.",
+  },
+  {
+    title: "Môi trường học tập hiện đại",
+    desc: "Tạo điều kiện học tập tốt nhất với trang thiết bị tiên tiến.",
+  },
+  {
+    title: "Giáo trình thực tiễn",
+    desc: "Giúp trẻ phát triển kỹ năng và tư duy thực tế.",
+  },
+  {
+    title: "Hoạt động ngoại khóa đa dạng",
+    desc: "Mở rộng trải nghiệm và khám phá thế giới xung quanh.",
+  },
+  {
+    title: "Cá nhân hóa lộ trình phát triển",
+    desc: "Chương trình được thiết kế phù hợp với từng năng lực của học sinh.",
+  },
+];
 export default function HomePage() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -74,6 +108,8 @@ export default function HomePage() {
 
     return () => clearInterval(timer);
   }, []);
+  const [selectedCourse, setSelectedCourse] = useState<any>(null);
+
   return (
     <div className="bg-white text-slate-900 overflow-hidden">
       {/* HERO */}
@@ -370,23 +406,34 @@ export default function HomePage() {
             <h2 className="text-4xl lg:text-6xl font-black mt-5 text-slate-900">
               Các khóa học nổi bật
             </h2>
+
+            <p className="mt-6 text-lg text-slate-600 max-w-3xl mx-auto leading-8">
+              Khám phá các chương trình giáo dục hiện đại giúp học sinh phát
+              triển toàn diện về kỹ năng, tư duy và công nghệ.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-20">
             {courses.map((course, index) => (
-              <motion.div
+              <motion.button
                 key={index}
+                type="button"
+                onClick={() => setSelectedCourse(course)}
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{
                   duration: 0.6,
-                  delay: index * 0.15,
+                  delay: index * 0.1,
                 }}
                 whileHover={{
                   y: -10,
                 }}
-                className="group bg-white rounded-[32px] overflow-hidden border border-slate-100 hover:shadow-2xl transition duration-300"
+                className="
+            group text-left bg-white rounded-[32px] overflow-hidden
+            border border-slate-100 hover:shadow-2xl
+            transition duration-300
+          "
               >
                 <div className="relative overflow-hidden">
                   <Image
@@ -396,79 +443,171 @@ export default function HomePage() {
                     height={350}
                     className="w-full h-72 object-cover group-hover:scale-110 transition duration-700"
                   />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+
+                  <div className="absolute bottom-5 left-5 right-5">
+                    <h3 className="text-3xl font-black text-white">
+                      {course.title}
+                    </h3>
+                  </div>
                 </div>
 
                 <div className="p-8">
-                  <h3 className="text-2xl font-black text-slate-900">
-                    {course.title}
-                  </h3>
+                  <p className="text-slate-600 leading-8">{course.short}</p>
 
-                  <p className="mt-4 text-slate-600 leading-8">
-                    Chương trình giáo dục hiện đại dành cho trẻ em phát triển
-                    toàn diện.
-                  </p>
-
-                  <button className="mt-6 text-yellow-500 font-bold hover:translate-x-1 transition">
+                  <div className="mt-6 inline-flex items-center text-yellow-500 font-black group-hover:translate-x-1 transition">
                     Xem chi tiết →
-                  </button>
+                  </div>
                 </div>
-              </motion.div>
+              </motion.button>
             ))}
           </div>
         </div>
       </motion.section>
 
+      <AnimatePresence>
+        {selectedCourse && (
+          <motion.div
+            className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedCourse(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 40, scale: 0.95 }}
+              transition={{ duration: 0.25 }}
+              onClick={(e) => e.stopPropagation()}
+              className="
+          relative bg-white rounded-[32px] overflow-hidden
+          max-w-4xl w-full shadow-2xl
+        "
+            >
+              <button
+                onClick={() => setSelectedCourse(null)}
+                className="
+            absolute top-5 right-5 z-10
+            w-11 h-11 rounded-full bg-white/90
+            flex items-center justify-center
+            shadow-lg hover:bg-slate-100 transition
+          "
+              >
+                <X size={22} />
+              </button>
+
+              <div className="grid md:grid-cols-2">
+                <div className="relative h-80 md:h-full">
+                  <Image
+                    src={selectedCourse.image}
+                    alt={selectedCourse.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                <div className="p-8 md:p-10">
+                  <p className="text-yellow-500 font-black uppercase tracking-[3px]">
+                    Chi tiết chương trình
+                  </p>
+
+                  <h3 className="mt-4 text-4xl font-black text-slate-900">
+                    {selectedCourse.title}
+                  </h3>
+
+                  <p className="mt-6 text-slate-600 leading-8 text-lg">
+                    {selectedCourse.desc}
+                  </p>
+
+                  <button
+                    onClick={() => setSelectedCourse(null)}
+                    className="
+                mt-8 px-7 py-4 rounded-2xl
+                bg-yellow-400 text-slate-900
+                font-black hover:bg-yellow-300 transition
+              "
+                  >
+                    Đóng
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* WHY */}
       <motion.section
-        className="py-28 bg-slate-900"
+        className="relative overflow-hidden py-24 bg-[#081225]"
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center">
-            <p className="text-yellow-400 font-black uppercase tracking-[4px]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_35%)]" />
+
+        <div className="relative max-w-[1500px] mx-auto px-6">
+          <div className="text-center max-w-5xl mx-auto">
+            <p className="text-yellow-400 font-black uppercase tracking-[6px]">
               Lý do lựa chọn
             </p>
 
-            <h2 className="text-4xl lg:text-6xl font-black mt-5 text-white">
+            <h2 className="text-5xl lg:text-7xl font-black mt-6 text-white drop-shadow-lg">
               Vì sao chọn DI-ICHI
             </h2>
+
+            <p className="mt-8 text-xl lg:text-2xl text-white/90 leading-relaxed font-serif">
+              ICHI tự hào là đơn vị tiên phong trong lĩnh vực giáo dục hiện đại,
+              mang đến cho trẻ em môi trường học tập sáng tạo, thực tiễn và phát
+              triển toàn diện. Với phương châm “Học để phát triển tương lai”
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-20">
-            {[
-              "Đội ngũ giáo viên chất lượng",
-              "Môi trường học tập hiện đại",
-              "Giáo trình STEM thực tiễn",
-              "Hoạt động ngoại khóa đa dạng",
-            ].map((item, index) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5 mt-8">
+            {reasons.map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{
                   duration: 0.5,
-                  delay: index * 0.1,
+                  delay: index * 0.08,
                 }}
                 whileHover={{
-                  y: -8,
+                  y: -10,
+                  scale: 1.02,
                 }}
-                className="bg-white rounded-[30px] p-8 shadow-2xl"
+                className="
+          min-h-[350px]
+          bg-white
+          rounded-[32px]
+          p-7
+          shadow-[0_25px_60px_rgba(0,0,0,0.28)]
+          flex flex-col items-center text-center
+          border border-white/60
+        "
               >
-                <div className="w-16 h-16 rounded-2xl bg-yellow-100 flex items-center justify-center text-3xl">
+                <div
+                  className="
+            w-20 h-20
+            rounded-3xl
+            bg-yellow-100
+            flex items-center justify-center
+            text-4xl
+            shadow-inner
+          "
+                >
                   ⭐
                 </div>
 
-                <h3 className="mt-6 text-2xl font-black leading-tight text-slate-900">
-                  {item}
+                <h3 className="mt-8 text-[26px] font-black leading-tight text-black">
+                  {item.title}
                 </h3>
 
-                <p className="mt-4 text-slate-600 leading-8">
-                  Giúp trẻ phát triển kỹ năng và tư duy thực tế.
-                </p>
+                <p className="mt-8 text-lg text-black leading-9">{item.desc}</p>
               </motion.div>
             ))}
           </div>
