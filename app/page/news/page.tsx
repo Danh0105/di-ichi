@@ -3,62 +3,62 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-
+import n1 from "./statics/1.jpg";
+import n2 from "./statics/2.jpg";
 const news = [
   {
     title: "GIÁO DỤC KỸ NĂNG SỐNG – BẢN CHẤT, CÁC MÔ HÌNH VÀ PHƯƠNG PHÁP",
-    desc: "Phân tích sâu về giáo dục kỹ năng sống trong bối cảnh giáo dục hiện đại tại Việt Nam và thế giới.",
-    image:
-      "https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1200&auto=format&fit=crop",
+    image: n1,
+    href: "/page/news/n1",
   },
 
   {
-    title: "DANH SÁCH GIÁO VIÊN THAM GIA GIẢNG DẠY KHU VỰC TP.HCM",
-    desc: "Danh sách giáo viên chất lượng cao tham gia giảng dạy tại hệ thống ICHI SKILL.",
-    image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop",
+    title:
+      "[CHIẾN SĨ NHÍ XUẤT QUÂN] – TRẢI NGHIỆM QUÂN NGŨ TẠI TRUNG ĐOÀN 174 TÂY NINH ",
+    image: n2,
+    href: "/page/news/n2",
   },
 
   {
     title: "CÙNG ICHI BƯỚC VÀO KỶ NGUYÊN GIÁO DỤC SỐ",
-    desc: "Ứng dụng công nghệ hiện đại trong phương pháp đào tạo và quản lý học tập.",
     image:
       "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
+    href: "/page/news/r1",
   },
 
   {
     title: "CHUYÊN ĐỀ TÂM LÝ TUỔI DẬY THÌ",
-    desc: "Lắng nghe và đồng hành cùng học sinh THCS trong giai đoạn trưởng thành.",
     image:
       "https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=1200&auto=format&fit=crop",
+    href: "/page/news/r1",
   },
 
   {
     title: "GIẢI BÓNG ĐÁ TỨ HÙNG TRANH CÚP ICHI",
-    desc: "Sự kiện thể thao kết nối học sinh và phụ huynh tại hệ thống ICHI SKILL.",
     image:
       "https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1200&auto=format&fit=crop",
+    href: "/page/news/r1",
   },
 
   {
     title: "CÔNG BỐ KẾT QUẢ CUỘC THI VIDEO",
-    desc: "Vinh danh các bài dự thi xuất sắc trong cuộc thi sáng tạo video.",
     image:
       "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop",
+    href: "/page/news/r1",
   },
 
   {
     title: "TUYỂN SINH KHÓA LẬP TRÌNH SCRATCH",
-    desc: "Khóa học robotics và lập trình dành riêng cho học sinh tiểu học.",
     image:
       "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop",
+    href: "/page/news/r1",
   },
 
   {
     title: "CUỘC THI VIDEO THẦY CÔ TRONG TRÁI TIM EM",
-    desc: "Lan tỏa tình cảm tri ân đến thầy cô giáo thông qua các video ý nghĩa.",
     image:
       "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop",
+    href: "/page/news/r1",
   },
 ];
 
@@ -132,17 +132,18 @@ export default function NewsPage() {
         {/* GRID */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {news.map((item, index) => (
-            <Link href="#" key={index} className="group">
+            <Link href={item.href} key={index} className="group">
               <div className="bg-white rounded-[28px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
                 {/* IMAGE */}
                 <div className="relative overflow-hidden">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    width={500}
-                    height={500}
-                    className="w-full h-[250px] object-cover group-hover:scale-110 transition duration-700"
-                  />
+                  <div className="relative h-[250px] overflow-hidden">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-contain group-hover:scale-110 transition duration-700"
+                    />
+                  </div>
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
@@ -158,10 +159,6 @@ export default function NewsPage() {
                   <h3 className="font-black text-[17px] leading-7 uppercase line-clamp-2 text-gray-900 group-hover:text-amber-600 transition">
                     {item.title}
                   </h3>
-
-                  <p className="mt-4 text-sm leading-7 text-gray-500 line-clamp-3">
-                    {item.desc}
-                  </p>
 
                   <button className="mt-6 text-amber-600 hover:text-amber-700 font-bold text-sm uppercase transition">
                     Xem chi tiết →
