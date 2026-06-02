@@ -1,78 +1,87 @@
 // src/app/page/activities/page.tsx
-
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { Home, MapPin, Phone, Mail, Globe, ChevronRight } from "lucide-react";
-
+import R1 from "./statics/r1.png";
+import R2 from "./statics/r2.png";
+import R3 from "./statics/r3.png";
+import R4 from "./statics/r4.png";
+import R5 from "./statics/r5.png";
+import R6 from "./statics/r6.png";
+import R7 from "./statics/r7.png";
+import R8 from "./statics/r8.png";
+import R9 from "./statics/r9.png";
+import { useState } from "react";
 const events = [
   {
-    title: "YEP -2026 - ICHI SKILL – 5 YEARS - TOGETHER WE SHINE",
-    image:
-      "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop",
+    title: "CHUYÊN ĐỀ: AN TOÀN – AN NINH MẠNG DÀNH CHO GIÁO VIÊN",
+    image: R1,
+    href: "/page/activities/r1",
   },
 
   {
-    title: "THÔNG BÁO NGHỈ TẾT NGUYÊN ĐÁN XUÂN BÍNH NGỌ 2026",
-    image:
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1200&auto=format&fit=crop",
+    title: "CHUYÊN ĐỀ: GIÁ TRỊ CỦA LÒNG BIẾT ƠN",
+    image: R2,
+    href: "/page/activities/r2",
   },
 
   {
-    title: "KẾT QUẢ CUỘC THI ONLINE 'THẦY CÔ TRONG TRÁI TIM EM'",
-    image:
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1200&auto=format&fit=crop",
+    title: "CHUYÊN ĐỀ GIÁO DỤC GIỚI TÍNH – HÀNH TRANG CHO TUỔI DẬY THÌ",
+    image: R3,
+    href: "/page/activities/r3",
   },
 
   {
-    title: "MV ICHI GIEO HẠT - GIEO YÊU THƯƠNG",
-    image:
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1200&auto=format&fit=crop",
+    title: "CHUYÊN ĐỀ: XÂY DỰNG TÌNH BẠN ĐẸP – PHÒNG CHỐNG BẠO LỰC HỌC ĐƯỜNG",
+    image: R4,
+    href: "/page/activities/r4",
   },
 
   {
-    title: "GIẢI ĐẤU PICKLE BALL ICHI SKILL 2025",
-    image:
-      "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=1200&auto=format&fit=crop",
+    title:
+      'ICHI SKILL ĐỒNG HÀNH CÙNG NGÀY HỘI "CHUYỂN ĐỘNG SỐ GIÁO DỤC" NĂM 2026',
+    image: R5,
+    href: "/page/activities/r5",
   },
 
   {
     title: "CUỘC THI ONLINE 'THẦY CÔ TRONG TRÁI TIM EM'",
-    image:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop",
+    image: R6,
+    href: "/page/activities/r6",
   },
 
   {
-    title: "CHÚC MỪNG NGÀY PHỤ NỮ VIỆT NAM 20-10",
-    image:
-      "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1200&auto=format&fit=crop",
+    title: "NGÀY HỘI STEM – KHƠI DẬY NIỀM ĐAM MÊ KHÁM PHÁ TẠI TRƯỜNG MẦM NON",
+    image: R7,
+    href: "/page/activities/r7",
   },
 
   {
-    title: "CHUYÊN ĐỀ KỸ NĂNG ỨNG XỬ VĂN MINH",
-    image:
-      "https://images.unsplash.com/photo-1515169067868-5387ec356754?q=80&w=1200&auto=format&fit=crop",
+    title: "NGÀY HỘI STEM – KHƠI NGUỒN ĐAM MÊ SÁNG TẠO",
+    image: R8,
+    href: "/page/activities/r8",
+  },
+  {
+    title: " TRANG BỊ KỸ NĂNG PHÒNG TRÁNH ĐUỐI NƯỚC CHO HỌC SINH ",
+    image: R9,
+    href: "/page/activities/r9",
   },
 ];
 
+const ITEMS_PER_PAGE = 8;
 export default function EventsPage() {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(events.length / ITEMS_PER_PAGE);
+
+  const currentEvents = events.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
+  );
   return (
     <div className="min-h-screen bg-[#fafafa]">
       {/* TOP BAR */}
-      <div className="bg-[#111827] text-white text-sm border-b border-gray-700">
-        <div className="max-w-7xl mx-auto px-6 h-11 flex items-center justify-between">
-          <p className="text-gray-300">
-            Chào Mừng Bạn Đến Với Website Của Chúng Tôi !
-          </p>
-
-          <div className="flex items-center gap-5 font-medium">
-            <button className="hover:text-amber-400 transition">
-              Đăng nhập
-            </button>
-
-            <button className="hover:text-amber-400 transition">Đăng ký</button>
-          </div>
-        </div>
-      </div>
 
       {/* HERO */}
       <section className="relative overflow-hidden">
@@ -135,8 +144,8 @@ export default function EventsPage() {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {events.map((item, index) => (
-            <Link href="#" key={index} className="group">
+          {currentEvents.map((item, index) => (
+            <Link href={item.href} key={index} className="group">
               <div className="bg-white overflow-hidden rounded-[28px] shadow-sm border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
                 {/* IMAGE */}
                 <div className="relative overflow-hidden">
@@ -174,25 +183,42 @@ export default function EventsPage() {
 
         {/* PAGINATION */}
         <div className="flex items-center justify-center gap-3 mt-20">
-          {[1, 2, 3].map((page) => (
+          <button
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage((p) => p - 1)}
+            className="
+    px-5 h-12 rounded-2xl border
+    text-black
+    disabled:opacity-50
+  "
+          >
+            Prev
+          </button>
+
+          {Array.from({ length: totalPages }, (_, i) => (
             <button
-              key={page}
-              className={`w-12 h-12 rounded-2xl font-semibold transition-all duration-300 ${
-                page === 1
-                  ? "bg-gray-900 text-white shadow-lg"
-                  : "bg-white border border-gray-200 text-gray-700 hover:bg-amber-50 hover:text-amber-700 hover:border-amber-200"
+              key={i + 1}
+              onClick={() => setCurrentPage(i + 1)}
+              className={`w-12 h-12 rounded-2xl font-semibold transition ${
+                currentPage === i + 1
+                  ? "bg-gray-900 text-white"
+                  : "bg-white border border-gray-200 text-black hover:bg-gray-100"
               }`}
             >
-              {page}
+              {i + 1}
             </button>
           ))}
 
-          <button className="px-6 h-12 rounded-2xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all duration-300 font-semibold">
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage((p) => p + 1)}
+            className="
+    px-5 h-12 rounded-2xl border
+    text-black
+    disabled:opacity-50
+  "
+          >
             Next
-          </button>
-
-          <button className="px-6 h-12 rounded-2xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all duration-300 font-semibold">
-            Last
           </button>
         </div>
       </section>
