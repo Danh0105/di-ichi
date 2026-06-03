@@ -1,10 +1,23 @@
 // src/app/news/page.tsx
+"use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import n1 from "./statics/1.jpg";
 import n2 from "./statics/2.jpg";
+import n3 from "./statics/3.jpg";
+import n4 from "./statics/4.jpg";
+import n5 from "./statics/5.jpg";
+import n6 from "./statics/6.jpg";
+import n7 from "./statics/7.jpg";
+import n8 from "./statics/8.jpg";
+import n9 from "./statics/9.jpg";
+import n10 from "./statics/10.jpg";
+import n11 from "./statics/11.jpg";
+import n12 from "./statics/12.jpg";
+import n13 from "./statics/13.jpg";
 const news = [
   {
     title: "GIÁO DỤC KỸ NĂNG SỐNG – BẢN CHẤT, CÁC MÔ HÌNH VÀ PHƯƠNG PHÁP",
@@ -20,49 +33,81 @@ const news = [
   },
 
   {
-    title: "CÙNG ICHI BƯỚC VÀO KỶ NGUYÊN GIÁO DỤC SỐ",
-    image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
-    href: "/page/news/r1",
+    title: "ICHI VINH DỰ ĐÓN TIẾP LÃNH ĐẠO ĐẾN THĂM VÀ CHÚC TẾT",
+    image: n3,
+    href: "/page/news/n3",
   },
 
   {
-    title: "CHUYÊN ĐỀ TÂM LÝ TUỔI DẬY THÌ",
-    image:
-      "https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=1200&auto=format&fit=crop",
-    href: "/page/news/r1",
+    title: "ICHI vinh dự đồng hành cùng EDTECH VIETNAM 2026     ",
+    image: n4,
+    href: "/page/news/n4",
   },
 
   {
-    title: "GIẢI BÓNG ĐÁ TỨ HÙNG TRANH CÚP ICHI",
-    image:
-      "https://images.unsplash.com/photo-1517466787929-bc90951d0974?q=80&w=1200&auto=format&fit=crop",
-    href: "/page/news/r1",
+    title:
+      "Học kì quân đội - TRƯỞNG THÀNH HƠN TỪ NHỮNG ĐIỀU GIẢN DỊ MỖI NGÀY...",
+    image: n5,
+    href: "/page/news/n5",
   },
 
   {
-    title: "CÔNG BỐ KẾT QUẢ CUỘC THI VIDEO",
-    image:
-      "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop",
-    href: "/page/news/r1",
+    title: "ICHI – LAN TỎA TRI THỨC, KẾT NỐI TƯƠNG LAI TẠI TÂY NINH ",
+    image: n6,
+    href: "/page/news/n6",
   },
 
   {
-    title: "TUYỂN SINH KHÓA LẬP TRÌNH SCRATCH",
-    image:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop",
-    href: "/page/news/r1",
+    title:
+      "KỶ NIỆM 136 NĂM NGÀY SINH  CHỦ TỊCH HỒ CHÍ MINH VĨ ĐẠI (19/5/1890 - 19/5/2026)  ",
+    image: n7,
+    href: "/page/news/n7",
   },
 
   {
-    title: "CUỘC THI VIDEO THẦY CÔ TRONG TRÁI TIM EM",
-    image:
-      "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop",
-    href: "/page/news/r1",
+    title: "LAN TỎA GIÁ TRỊ – CHUNG TAY BẢO VỆ TRẺ EM",
+    image: n8,
+    href: "/page/news/n8",
+  },
+  {
+    title: "ICHI & UEF: MỞ RỘNG HÀNH TRÌNH “ĐÀO TẠO GẮN KẾT VỚI DOANH NGHIỆP”",
+    image: n9,
+    href: "/page/news/n9",
+  },
+  {
+    title: 'ICHI TẠI NGÀY HỘI "CHUYỂN ĐỘNG SỐ GIÁO DỤC" PHƯỜNG TÂN HÒA 2026! ”',
+    image: n10,
+    href: "/page/news/n10",
+  },
+
+  {
+    title:
+      "Chào mừng 3 sự kiện trọng đại của đất nước, Ngày Giỗ Tổ Hùng Vương Mùng 10 Tháng 3, Ngày Giải phóng miền Nam thống nhất đất nước (30/4) và Ngày Quốc tế Lao động (1/5)    ”",
+    image: n11,
+    href: "/page/news/n11",
+  },
+  {
+    title: "Cuộc Thi: Thầy Cô Trong Trái Tim Em - Mùa 4    ”",
+    image: n12,
+    href: "/page/news/n12",
+  },
+  {
+    title:
+      "ICHI ĐỒNG HÀNH CÙNG TUẦN LỄ KHOA HỌC CÔNG NGHỆ ĐỔI MỚI SÁNG TẠO & CHUYỂN ĐỔI SỐ TỈNH TÂY NINH 2026",
+    image: n13,
+    href: "/page/news/n13",
   },
 ];
-
+const ITEMS_PER_PAGE = 8;
 export default function NewsPage() {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(news.length / ITEMS_PER_PAGE);
+
+  const currentNews = news.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
+  );
   return (
     <div className="min-h-screen bg-[#fafafa]">
       {/* HERO */}
@@ -131,7 +176,7 @@ export default function NewsPage() {
 
         {/* GRID */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {news.map((item, index) => (
+          {currentNews.map((item, index) => (
             <Link href={item.href} key={index} className="group">
               <div className="bg-white rounded-[28px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
                 {/* IMAGE */}
@@ -171,25 +216,34 @@ export default function NewsPage() {
 
         {/* PAGINATION */}
         <div className="flex flex-wrap items-center justify-center gap-3 mt-20">
-          {[1, 2, 3, 4, 5, 6, 7].map((page) => (
+          <button
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage((p) => p - 1)}
+            className="px-5 h-12 rounded-2xl border text-black disabled:opacity-50"
+          >
+            Prev
+          </button>
+
+          {Array.from({ length: totalPages }, (_, i) => (
             <button
-              key={page}
-              className={`w-12 h-12 rounded-2xl font-semibold transition-all duration-300 ${
-                page === 1
-                  ? "bg-gray-900 text-white shadow-lg"
-                  : "bg-white border border-gray-200 text-gray-700 hover:bg-amber-50 hover:text-amber-700 hover:border-amber-200"
+              key={i + 1}
+              onClick={() => setCurrentPage(i + 1)}
+              className={`w-12 h-12 rounded-2xl font-semibold transition ${
+                currentPage === i + 1
+                  ? "bg-amber-400 text-black"
+                  : "bg-white border border-gray-200 text-black hover:bg-amber-50"
               }`}
             >
-              {page}
+              {i + 1}
             </button>
           ))}
 
-          <button className="px-6 h-12 rounded-2xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all duration-300 font-semibold">
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage((p) => p + 1)}
+            className="px-5 h-12 rounded-2xl border text-black disabled:opacity-50"
+          >
             Next
-          </button>
-
-          <button className="px-6 h-12 rounded-2xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all duration-300 font-semibold">
-            Last
           </button>
         </div>
       </section>
