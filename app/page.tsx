@@ -20,45 +20,43 @@ const courses = [
     short:
       "Giúp trẻ phát triển toàn diện về tư duy, cảm xúc và kỹ năng xã hội.",
     desc: "Chương trình Kỹ năng sống giúp học sinh hình thành sự tự tin, khả năng giao tiếp, làm việc nhóm, xử lý tình huống và phát triển nhân cách tích cực trong học tập cũng như cuộc sống.",
-    image: "/images/ky-nang-song.jpg",
+    image: "/image-courses/ky-nang-song.jpg",
   },
   {
     title: "STEM",
     short: "Khơi dậy đam mê khoa học, công nghệ và sáng tạo.",
     desc: "Chương trình STEM giúp học sinh tiếp cận khoa học, công nghệ, kỹ thuật và toán học thông qua các hoạt động thực hành, dự án sáng tạo và giải quyết vấn đề thực tế.",
-    image: "/images/stem.jpg",
+    image: "/image-courses/stem.jpg",
   },
   {
     title: "Công dân số",
     short: "Sử dụng công nghệ an toàn, hiệu quả và có trách nhiệm.",
     desc: "Chương trình Công dân số trang bị cho học sinh kỹ năng sử dụng thiết bị công nghệ, bảo vệ bản thân trên môi trường mạng, nhận diện rủi ro số và ứng xử văn minh trên internet.",
-    image: "/images/cong-dan-so.jpg",
+    image: "/image-courses/cong-dan-so.jpg",
   },
   {
     title: "AI",
     short: "Tiếp cận công nghệ trí tuệ nhân tạo hiện đại.",
     desc: "Chương trình AI giúp học sinh làm quen với trí tuệ nhân tạo, tư duy công nghệ, ứng dụng chuyển đổi số và phát triển khả năng sáng tạo trong kỷ nguyên số.",
-    image: "/images/ai.jpg",
+    image: "/image-courses/ai.jpg",
   },
   {
     title: "Tiếng Anh",
     short: "Phát triển ngôn ngữ và hội nhập quốc tế.",
     desc: "Chương trình Tiếng Anh giúp học sinh phát triển kỹ năng nghe, nói, đọc, viết thông qua phương pháp học sinh động, thực tiễn và phù hợp với lứa tuổi.",
-    image: "/images/tieng-anh.jpg",
+    image: "/image-courses/tieng-anh.jpg",
   },
   {
     title: "Tin học ICDL",
     short: "Chuẩn tin học quốc tế, giá trị toàn cầu.",
     desc: "Chương trình Tin học ICDL trang bị kiến thức và kỹ năng tin học chuẩn quốc tế, giúp học sinh sử dụng máy tính, phần mềm văn phòng và công nghệ số một cách chuyên nghiệp.",
-    image: "/images/icdl.jpg",
+    image: "/image-courses/icdl.jpg",
   },
 ];
 const activities = [
-  "https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1200&auto=format&fit=crop",
-
-  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop",
-
-  "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200&auto=format&fit=crop",
+  "/image-courses/r81.png",
+  "/image-courses/r25.png",
+  "/image-courses/r45.png",
 ];
 
 const fadeUp = {

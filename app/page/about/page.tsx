@@ -50,27 +50,6 @@ const values = [
   },
 ];
 
-const experts = [
-  {
-    name: "TS. Nguyễn Văn Hùng",
-    role: "Cố vấn chuyên môn cao cấp",
-  },
-  {
-    name: "ThS. Nguyễn Thị Anh Đào",
-    role: "Cố vấn chuyên môn",
-  },
-  {
-    name: "ThS. Nguyễn Thành Nhơn",
-    role: "Chuyên gia tư vấn sức khỏe và y tế học đường",
-  },
-  {
-    name: "Ông Trần Thanh Tiền",
-    role: "Chuyên gia Giáo dục Kỹ năng sống - Công dân số - STEM - AI",
-  },
-];
-
-const teachers = [1, 2, 3];
-
 export default function AboutPage() {
   return (
     <div className="bg-[#f8fafc] overflow-hidden">
@@ -449,6 +428,10 @@ export default function AboutPage() {
                 {
                   name: "ThS. Nguyễn Thành Nhơn",
                   role: "Chuyên gia sức khỏe & y tế học đường",
+                },
+                {
+                  name: "Ths. Vũ Thị Kim Chi",
+                  role: "Phòng chuyên môn ICHI - Trưởng nhóm giáo viên các khu vực, chuyên viên đào tạo chương trình ICHI ",
                 },
               ].map((item, index) => (
                 <div
