@@ -13,6 +13,10 @@ import {
   Users2,
 } from "lucide-react";
 import IMG1 from "./statics/IMG1.png";
+import AVT1 from "./statics/1.jpg";
+import AVT2 from "./statics/2.jpg";
+import AVT3 from "./statics/3.jpg";
+import AVT4 from "./statics/4.jpg";
 const stats = [
   {
     number: "100+",
@@ -386,81 +390,145 @@ export default function AboutPage() {
 
           <div className="mt-20 grid lg:grid-cols-3 gap-8">
             {/* Featured Expert */}
-            <div className="lg:col-span-2 relative overflow-hidden rounded-[40px] bg-white/5 border border-white/10 backdrop-blur-xl p-10 group hover:border-yellow-400/30 transition-all duration-500">
-              <div className="flex flex-col lg:flex-row gap-8 items-center">
-                <div className="w-44 h-44 rounded-[32px] bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shrink-0">
-                  <GraduationCap size={70} className="text-white" />
+            <div
+              className="
+    lg:col-span-2
+    relative overflow-hidden
+    rounded-[40px]
+    bg-gradient-to-br
+    from-slate-900
+    via-slate-800
+    to-slate-900
+    border border-yellow-500/20
+    p-10 lg:p-12
+    shadow-[0_30px_80px_rgba(0,0,0,0.45)]
+  "
+            >
+              <div className="absolute top-0 right-0 w-80 h-80 bg-yellow-500/10 blur-[120px] rounded-full" />
+
+              <div
+                className="
+                lg:col-span-2
+                relative
+                overflow-hidden
+                rounded-[40px]
+                bg-gradient-to-br
+                from-slate-900
+                via-slate-800
+                to-slate-900
+                border border-yellow-500/20
+                p-2 lg:p-2
+                min-h-[450px]
+                flex items-center
+              "
+              >
+                <div className="relative">
+                  <div className="absolute -inset-2 rounded-[36px] bg-gradient-to-r from-yellow-400 to-orange-500 blur-md opacity-70" />
+
+                  <div className="relative w-52 h-52 overflow-hidden rounded-[32px] border-4 border-white/10">
+                    <Image
+                      src={AVT1}
+                      alt="Ông Trần Thanh Tiền"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
                 </div>
 
                 <div>
-                  <span className="inline-flex px-4 py-2 rounded-full bg-yellow-500/20 text-yellow-400 text-sm font-bold">
+                  <span className="inline-flex px-5 py-2 rounded-full bg-yellow-500/15 border border-yellow-500/30 text-yellow-400 text-sm font-bold tracking-wider">
                     CHUYÊN GIA CHỦ CHỐT
                   </span>
 
-                  <h3 className="mt-5 text-4xl font-black text-white">
+                  <h3 className="mt-6 text-5xl font-black text-white">
                     Ông Trần Thanh Tiền
                   </h3>
 
-                  <p className="mt-4 text-yellow-400 font-semibold">
+                  <p className="mt-3 text-xl text-yellow-400 font-semibold">
                     Trưởng phòng chuyên môn
                   </p>
 
-                  <p className="mt-6 text-slate-300 leading-8">
+                  <p className="mt-6 text-slate-300 leading-8 max-w-2xl">
                     Chuyên gia Giáo dục Kỹ năng sống, Công dân số, STEM và Trí
-                    tuệ nhân tạo (AI), trực tiếp tham gia nghiên cứu, phát triển
-                    và triển khai các chương trình đào tạo của ICHI.
+                    tuệ nhân tạo (AI).
                   </p>
+
+                  <div className="flex flex-wrap gap-3 mt-8">
+                    <span className="px-4 py-2 rounded-full bg-white/5 text-slate-300 text-sm">
+                      STEM
+                    </span>
+
+                    <span className="px-4 py-2 rounded-full bg-white/5 text-slate-300 text-sm">
+                      AI Education
+                    </span>
+
+                    <span className="px-4 py-2 rounded-full bg-white/5 text-slate-300 text-sm">
+                      Công dân số
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-
             {/* Side Cards */}
             <div className="space-y-6">
               {[
                 {
                   name: "TS. Nguyễn Văn Hùng",
                   role: "Cố vấn chuyên môn cao cấp",
-                },
-                {
-                  name: "ThS. Nguyễn Thị Anh Đào",
-                  role: "Cố vấn chuyên môn",
+                  avatar: AVT3,
                 },
                 {
                   name: "ThS. Nguyễn Thành Nhơn",
                   role: "Chuyên gia sức khỏe & y tế học đường",
+                  avatar: AVT2,
                 },
                 {
-                  name: "Ths. Vũ Thị Kim Chi",
-                  role: "Phòng chuyên môn ICHI - Trưởng nhóm giáo viên các khu vực, chuyên viên đào tạo chương trình ICHI ",
+                  name: "ThS. Vũ Thị Kim Chi",
+                  role: "Phòng chuyên môn ICHI - Trưởng nhóm giáo viên các khu vực, chuyên viên đào tạo chương trình ICHI",
+                  avatar: AVT4,
+                  borderColor: "pink",
                 },
               ].map((item, index) => (
                 <div
-                  key={index}
                   className="
-              group
-              bg-white/5
-              backdrop-blur-xl
-              border
-              border-white/10
-              rounded-[28px]
-              p-6
-              hover:border-yellow-400/30
-              hover:-translate-y-1
-              transition-all
-              duration-300
-            "
+                  group
+                  bg-white/[0.06]
+                  backdrop-blur-2xl
+                  border border-white/10
+                  rounded-[28px]
+                  p-5
+                  hover:border-yellow-400/40
+                  hover:bg-white/[0.08]
+                  hover:-translate-y-2
+                  transition-all duration-500
+                "
                 >
-                  <div className="flex gap-5 items-center">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shrink-0">
-                      <GraduationCap size={28} className="text-white" />
+                  <div className="flex items-center gap-4">
+                    <div className="relative w-20 h-20 shrink-0">
+                      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-yellow-400 to-orange-500 blur-md opacity-60" />
+
+                      <div
+                        className={`relative w-full h-full overflow-hidden rounded-3xl border-2 ${
+                          item.borderColor === "pink"
+                            ? "border-pink-400/60"
+                            : "border-yellow-400/50"
+                        }`}
+                      >
+                        <Image
+                          src={item.avatar}
+                          alt={item.name}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
                     </div>
 
-                    <div>
-                      <h4 className="text-lg font-bold text-white leading-tight">
+                    <div className="flex-1">
+                      <h4 className="text-white font-bold text-lg leading-tight">
                         {item.name}
                       </h4>
 
-                      <p className="mt-2 text-slate-400 text-sm leading-6">
+                      <p className="mt-2 text-yellow-400 text-sm">
                         {item.role}
                       </p>
                     </div>
