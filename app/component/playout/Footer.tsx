@@ -115,13 +115,13 @@ export default function Footer() {
               <div className="flex gap-4">
                 <Phone size={20} className="text-yellow-400 shrink-0" />
 
-                <p className="text-slate-300">0707 868 000</p>
+                <p className="text-slate-300">0937.828.252</p>
               </div>
 
               <div className="flex gap-4">
                 <Mail size={20} className="text-yellow-400 shrink-0" />
 
-                <p className="text-slate-300">contact@di-ichi.vn</p>
+                <p className="text-slate-300">chuyendoiso.ichi.edu@gmail.com</p>
               </div>
 
               <div className="flex gap-4">
