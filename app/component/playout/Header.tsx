@@ -24,8 +24,8 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-5 text-slate-500">
-            <span>Hotline: 0707 868 000</span>
-            <span>Email: support@di-ichi.vn</span>
+            <span>Hotline: 0937.828.252</span>
+            <span>Email: chuyendoiso.ichi.edu@gmail.com</span>
           </div>
         </div>
       </div>
